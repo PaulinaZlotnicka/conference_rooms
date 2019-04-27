@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> {{ title }}</title>
+</head>
+    <body>
+        <p>
+            {% for room in rooms_list %}
+                {{ room.name }} <a href='/room/modify/{{ room.pk }}'> EDYTUJ </a>
+                <a href='/room/delete/{{ room.pk }}'> USUŃ </a><br>
+            {% endfor %}
+        </p>
+        <p>
+            <a href='/room/new'> DODAJ SALĘ </a>
+        </p>
+    </body>
+</html>
+

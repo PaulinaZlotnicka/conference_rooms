@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> {{ title }}</title>
+</head>
+    <body>
+        <p> {{ text }} </p>
+        <p>
+        <form method="post">
+            NAZWA: <input type="text" name="name" value="{{ room.name }}">
+                <input type="submit" value="Zmień nazwę" name="name_change"> <br>
+            POJEMNOŚĆ: <input type="number" step=1 min=0 max=200 name="capacity" value="{{ room.capacity }}">
+                <input type="submit" value="Zmień pojemność" name="capacity_change"> <br>
+            PROJEKTOR: {{room.projector_available}} <input type="checkbox" name="projector_available">
+                <input type="submit" value="Zmień projektor" name="projector_available_change"> <br>
+            KLIMATYZACJA: {{room.air_conditioned}} <input type ='checkbox' name="air_conditioned">
+                <input type="submit" value="Zmień klimatyzację" name="air_conditioned_change"> <br>
+            {% csrf_token%}
+        </form>
+        </p>
+    </body>
+</html>

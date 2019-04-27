@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> {{ title }}</title>
+</head>
+    <body>
+        <p>
+            NAZWA SALI: {{ room.name }}<br>
+           ROJEMNOŚĆ: {{ room.capacity }}<br>
+           PROJEKTOR: {{ room.projector_available | yesno:"Tak,Nie" }}<br>
+           KLIMATYZACJA: {{ room.air_conditioned | yesno:"Tak,Nie"}} <br>
+        </p>
+    </body>
+</html>

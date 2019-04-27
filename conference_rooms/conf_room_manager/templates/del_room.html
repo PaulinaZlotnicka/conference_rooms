@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> {{ title }}</title>
+</head>
+    <body>
+        <p>
+        <form method="post">
+            {% csrf_token%}
+            <input type="submit" value="USUŃ!" name="del_room"><br>
+        </form>
+        </p>
+
+        <p> {{ text}} </p>
+
+    </body>
+</html>
+

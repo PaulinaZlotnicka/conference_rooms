@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> {{ title }}</title>
+</head>
+    <body>
+        <p>
+            {{ text }}
+            {{ room.name }}
+        </p>
+        <p>
+        <form method="post">
+            WYBIERZ DATĘ: <input type="date" name="res_date" min="{{ min_date }}">
+            KOMENTARZ: <input type="text" name="comment">
+                <input type="submit" value="REZERWUJ" name="make_reservation"> <br>
+            {% csrf_token%}
+        </form>
+
+        </p>
+    </body>
+</html>

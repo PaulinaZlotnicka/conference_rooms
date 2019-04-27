@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> {{ title }}</title>
+</head>
+    <body>
+        <p> {{ text }} </p>
+        <p>
+        <form action='/room/new/' method="post">
+            NAZWA: <input type="text" name="name"> <br>
+            POJEMNOŚĆ: <input type="number" step=1 min=0 max=200 name="capacity"> <br>
+            PROJEKTOR: <input type="checkbox" name="projector_available"> <br>
+            KLIMATYZACJA: <input type ='checkbox' name="air_conditioned"> <br>
+            {% csrf_token%}
+            <input type="submit" value="Dodaj!" name="new_room"><br>
+        </form>
+        </p>
+    </body>
+</html>
