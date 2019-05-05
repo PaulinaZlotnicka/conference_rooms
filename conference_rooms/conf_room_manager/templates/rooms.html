@@ -8,7 +8,8 @@
         <p>
             {% for room in rooms_list %}
                 {{ room.name }} <a href='/room/modify/{{ room.pk }}'> EDYTUJ </a>
-                <a href='/room/delete/{{ room.pk }}'> USUŃ </a><br>
+                <a href='/room/delete/{{ room.pk }}'> USUŃ </a>
+                {{ available }} <br>
             {% endfor %}
         </p>
         <p>

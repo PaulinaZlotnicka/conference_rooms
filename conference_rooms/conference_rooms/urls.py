@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path
-from conf_room_manager.views import AddRoom, EditRoom, DelRoom, ShowOneRoom, ShowRooms, MakeReservation
+from conf_room_manager.views import AddRoom, EditRoom, DelRoom, ShowOneRoom, ShowRooms, MakeReservation, SearchRooms
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,6 +25,7 @@ urlpatterns = [
     re_path(r'^room/delete/(?P<room_id>\d+)$', DelRoom.as_view()),
     path('room/', ShowRooms.as_view()),
     re_path(r'^reservation/(?P<room_id>\d+)$', MakeReservation.as_view()),
+    path('search/', SearchRooms.as_view()),
 ]
 
 

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> {{ title }}</title>
+</head>
+    <body>
+        <p> {{ text_1 }} </p>
+        <p>
+        <form method="post">
+            Nazwa: <input type="text" name="name"><input type="submit" value="Szukaj" name="search_name"><br>
+            Minimalna ilość osób w sali: <input type="number" name="capacity"> <input type="submit" value="Szukaj" name="search_capacity"><br>
+            Dzień: <input type="date" name="date"> <input type="submit" value="Szukaj" name="search_date"><br>
+            Rzutnik: <input type="checkbox" name="projector_available"> <input type="submit" value="Szukaj" name="search_projector"><br>
+            Klimatyzacja: <input type="checkbox" name="air_conditioned"> <input type="submit" value="Szukaj" name="search_ac"><br>
+             {% csrf_token%}
+        </form>
+        </p>
+
+        <p>
+            {{ text_2 }}
+            {% for room in rooms_list %}
+                {{ room.name }} w dniu {{ room.date }} <br>
+            {% endfor %}
+        </p>
+
+    </body>
+</html>

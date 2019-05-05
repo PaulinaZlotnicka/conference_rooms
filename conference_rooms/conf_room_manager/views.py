@@ -82,7 +82,16 @@ class ShowOneRoom(View):
 class ShowRooms(View):
     def get(self, request):
         rooms_list = Room.objects.all()
+        for room in rooms_list:
+            try:
+                RoomReservation.objects.filter(date=datetime.datetime.now().date()).filter(room=room)
+            except ObjectDoesNotExist:
+                available = "DZIŚ WOLNA"
+            else:
+                available = "DZIŚ ZAJĘTA"
+
         ctx = {"rooms_list": rooms_list,
+               "available": available,
                "title": "SALE"}
         return render(request, 'rooms.html', ctx)
 
@@ -122,3 +131,30 @@ class MakeReservation(View):
                        "title": "REZERWACJA"
                        }
             return render(request, "make_reservation.html", ctx)
+
+class SearchRooms(View):
+    def get(self, request):
+        ctx = {"text_1": "Wypełnij kryteria wyszukiwania:",
+               "title": "SZUKANIE SALI"
+        }
+        return render(request, "search_rooms.html", ctx)
+
+    def post(self, request):
+        rooms_list=[]
+        if request.POST.get("search_name"):
+            rooms_list = Room.objects.filter(name__contains=request.POST.get('name'))
+        if request.POST.get("search_capacity"):
+            rooms_list = Room.objects.filter(capacity__gte=int(request.POST.get("capacity")))
+        if request.POST.get("search_projector"):
+            rooms_list = Room.objects.filter(projector_available=bool(request.POST.get('projector_available')))
+        if request.POST.get("search_ac"):
+            rooms_list = Room.objects.filter(air_conditioned=bool(request.POST.get('air_conditioned')))
+        if request.POST.get("search_date"):
+            rooms_list = RoomReservation.objects.filter(date=parser.parse(request.POST.get("date")))
+
+        ctx = {"rooms_list": rooms_list,
+                "text_2": "WYNIK WYSZUKIWANIA:",
+               "title": "SZUKANIE SALI"
+        }
+        return render(request, "search_rooms.html", ctx)
+        
